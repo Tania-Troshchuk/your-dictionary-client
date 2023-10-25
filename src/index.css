@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.info-text {
+  margin-top: 8rem;
+  font-family: Kalam, sans-serif;
+  color: #511abd;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+}
+
+.info-text a {
+  text-decoration-line: underline;
+}
+
+.info-text a:hover {
+  color: #f4f2ff
+}
+
+.card-transition {
+  transition: left 0.3s ease;
+}
