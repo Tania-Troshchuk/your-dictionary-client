@@ -1,10 +1,10 @@
-import { HTMLAttributes, useCallback, useState } from "react"
-import { LineInput, MainButton } from ".."
-import classNames from "classnames"
-import { IWord } from "../../data/types"
+import { HTMLAttributes, useCallback, useState } from 'react'
+import { LineInput, MainButton } from '..'
+import classNames from 'classnames'
+import { IWord } from '../../data/types'
 
 interface IProps extends HTMLAttributes<HTMLFormElement> {
-  isLoading: boolean,
+  isLoading: boolean
   handleSubmit: (value: IWord) => void
   editedWord?: IWord
 }
@@ -17,34 +17,34 @@ export const WordForm = (props: IProps) => {
     _id: editedWord?._id,
     word: editedWord?.word ?? '',
     translation: editedWord?.translation ?? '',
-    examples: editedWord?.examples ?? ''
+    examples: editedWord?.examples ?? '',
   })
 
   const handleInput = useCallback((value: string, key: keyof IWord) => {
-    setWord(prev => ({
+    setWord((prev) => ({
       ...prev,
-      [key]: value
+      [key]: value,
     }))
   }, [])
 
   return (
     <form
       className="p-6 flex gap-8 flex-col items-center bg-melrose-50 rounded-lg shadow-lg"
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault()
         handleSubmit(word)
       }}
     >
       <LineInput
         value={word.word}
-        handleInput={value => handleInput(value, 'word')}
-        placeholder='new word'
+        handleInput={(value) => handleInput(value, 'word')}
+        placeholder="new word"
       />
 
       <LineInput
         value={word.translation}
-        handleInput={value => handleInput(value, 'translation')}
-        placeholder='translation'
+        handleInput={(value) => handleInput(value, 'translation')}
+        placeholder="translation"
       />
 
       <div className="w-full">
@@ -54,11 +54,11 @@ export const WordForm = (props: IProps) => {
 
         <textarea
           className={classNames(
-            "p-4 resize-none w-full border-2 rounded border-melrose-300 outline-none tracking-wide text-melrose-800",
-            "placeholder:text-slate-400 placeholder:tracking-wider"
+            'p-4 resize-none w-full border-2 rounded border-melrose-300 outline-none tracking-wide text-melrose-800',
+            'placeholder:text-slate-400 placeholder:tracking-wider'
           )}
           value={word.examples}
-          onChange={e => handleInput(e.target.value, 'examples')}
+          onChange={(e) => handleInput(e.target.value, 'examples')}
           rows={7}
           maxLength={maxLenght}
           placeholder="Not provided yet..."

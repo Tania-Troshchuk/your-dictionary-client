@@ -1,11 +1,11 @@
-import { HTMLAttributes } from "react"
-import { ResultsCircle } from ".."
-import moment from "moment"
+import { HTMLAttributes } from 'react'
+import { ResultsCircle } from '..'
+import moment from 'moment'
 
 interface IProps extends HTMLAttributes<HTMLDivElement> {
-  result: number,
+  result: number
   words: string[]
-  date?: string,
+  date?: string
   onClickDelete?: () => void
 }
 
@@ -25,28 +25,27 @@ export const ResultCard = (props: IProps) => {
       )}
 
       <div className="py-2 tracking-wide text-xl text-melrose-800 font-kalam">
-        {moment(date).format("dddd, MMMM Do YYYY")}
+        {moment(date).format('dddd, MMMM Do YYYY')}
       </div>
 
       <div className="flex gap-8 sm:gap-20 justify-center">
         <ResultsCircle percent={result} />
 
-        {
-          result === 100
-            ? (
-              <div>Outstanding! You've achieved a flawless score on the test. Well done!</div>
-            )
-            : (
-              <div>
-                <p className="pb-2">Pay more attention to the words:</p>
-                <ul className="list-disc list-inside text-sm">
-                  {words.map(word => (
-                    <li key={`${word}-${moment(date)}`}>{word}</li>
-                  ))}
-                </ul>
-              </div>
-            )
-        }
+        {result === 100 ? (
+          <div>
+            Outstanding! You've achieved a flawless score on the test. Well
+            done!
+          </div>
+        ) : (
+          <div>
+            <p className="pb-2">Pay more attention to the words:</p>
+            <ul className="list-disc list-inside text-sm">
+              {words.map((word) => (
+                <li key={`${word}-${moment(date)}`}>{word}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   )

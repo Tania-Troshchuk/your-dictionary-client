@@ -1,6 +1,6 @@
-import Cookie from 'js-cookie';
-import axios from 'axios';
-import { Middleware } from '@reduxjs/toolkit';
+import Cookie from 'js-cookie'
+import axios from 'axios'
+import { Middleware } from '@reduxjs/toolkit'
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL
 
@@ -21,6 +21,5 @@ export const setTokenMiddleware: Middleware = () => (next) => (action) => {
     clientWithToken.defaults.headers.common['Authorization'] = `Bearer ${token}`
   }
 
-  return next(action);
-};
-
+  return next(action)
+}

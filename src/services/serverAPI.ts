@@ -1,6 +1,6 @@
-import { ITest, IUser, IWord } from "../data/types";
-import { clientNoToken, clientWithToken } from "./axiosClients";
-import { responseHandler } from "./responseHandler";
+import { ITest, IUser, IWord } from '../data/types'
+import { clientNoToken, clientWithToken } from './axiosClients'
+import { responseHandler } from './responseHandler'
 
 export const login = async (
   data: Pick<IUser, 'email' | 'password'>

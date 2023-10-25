@@ -1,12 +1,12 @@
-import { HTMLAttributes, useState } from "react";
-import classNames from "classnames";
-import eye from '../../assets/eye-show.svg';
-import closeEye from '../../assets/eye-closed.svg';
+import { HTMLAttributes, useState } from 'react'
+import classNames from 'classnames'
+import eye from '../../assets/eye-show.svg'
+import closeEye from '../../assets/eye-closed.svg'
 
 interface IProps extends HTMLAttributes<HTMLInputElement> {
-  value: string,
-  error?: string,
-  isPassword?: true,
+  value: string
+  error?: string
+  isPassword?: true
   handleInput: (value: string) => void
 }
 

@@ -1,13 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
-import { routes } from "../data/routes"
-import { LineInput, Loader, MainButton } from "../components"
-import { useCallback, useEffect, useState } from "react"
-import { useAppDispatch } from "../redux/hooks"
-import { IUser } from "../data/types"
-import { useRegistrationMutation } from "../redux/services/userAPI"
-import { signUpValidation } from "../utils/signUpValidation"
-import Cookies from "js-cookie"
-import { setIsAuth } from "../redux/authSlice"
+import { Link, useNavigate } from 'react-router-dom'
+import { routes } from '../data/routes'
+import { LineInput, Loader, MainButton } from '../components'
+import { useCallback, useEffect, useState } from 'react'
+import { useAppDispatch } from '../redux/hooks'
+import { IUser } from '../data/types'
+import { useRegistrationMutation } from '../redux/services/userAPI'
+import { signUpValidation } from '../utils/signUpValidation'
+import Cookies from 'js-cookie'
+import { setIsAuth } from '../redux/authSlice'
 
 export interface ISignUpUser extends IUser {
   repeatPassword: string
@@ -16,19 +16,20 @@ export interface ISignUpUser extends IUser {
 export const SignUp = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const [registration, { isSuccess, data, isLoading }] = useRegistrationMutation()
+  const [registration, { isSuccess, data, isLoading }] =
+    useRegistrationMutation()
   const [user, setUser] = useState<ISignUpUser>({
     username: '',
     email: '',
     password: '',
-    repeatPassword: ''
+    repeatPassword: '',
   })
   const [errors, setErrors] = useState<ISignUpUser | undefined>()
 
   const handleInput = useCallback((value: string, key: keyof ISignUpUser) => {
-    setUser(prev => ({
+    setUser((prev) => ({
       ...prev,
-      [key]: value
+      [key]: value,
     }))
   }, [])
 
@@ -42,7 +43,7 @@ export const SignUp = () => {
     await registration({
       username: user.username,
       email: user.email,
-      password: user.password
+      password: user.password,
     })
   }, [registration, user])
 
@@ -60,7 +61,7 @@ export const SignUp = () => {
 
       <form
         className="p-6 flex gap-6 flex-col bg-melrose-50 rounded-lg shadow-lg"
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault()
           handleSignUp()
         }}
@@ -75,21 +76,21 @@ export const SignUp = () => {
         <LineInput
           value={user.username}
           handleInput={(value) => handleInput(value, 'username')}
-          placeholder='username'
+          placeholder="username"
           error={errors?.username}
         />
 
         <LineInput
           value={user.email}
           handleInput={(value) => handleInput(value, 'email')}
-          placeholder='email'
+          placeholder="email"
           error={errors?.email}
         />
 
         <LineInput
           value={user.password}
           handleInput={(value) => handleInput(value, 'password')}
-          placeholder='password'
+          placeholder="password"
           isPassword
           error={errors?.password}
         />
@@ -97,7 +98,7 @@ export const SignUp = () => {
         <LineInput
           value={user.repeatPassword}
           handleInput={(value) => handleInput(value, 'repeatPassword')}
-          placeholder='repeat password'
+          placeholder="repeat password"
           isPassword
           error={errors?.repeatPassword}
         />

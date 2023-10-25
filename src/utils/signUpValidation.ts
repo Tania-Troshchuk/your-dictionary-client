@@ -1,4 +1,4 @@
-import { ISignUpUser } from "../pages"
+import { ISignUpUser } from '../pages'
 
 export const signUpValidation = (
   user: ISignUpUser,
@@ -9,30 +9,31 @@ export const signUpValidation = (
     username: '',
     email: '',
     password: '',
-    repeatPassword: ''
+    repeatPassword: '',
   }
 
   if (user.username.length > 50) {
-    errors.username = "Username must be less than 50 characters"
+    errors.username = 'Username must be less than 50 characters'
   }
 
   if (user.username.length < 2) {
-    errors.username = "Username must be at least 2 characters"
+    errors.username = 'Username must be at least 2 characters'
   }
 
-  if (!user.email || !(emailRegExp.test(user.email))) {
-    errors.email = "Invalid email format. Please check the email."
+  if (!user.email || !emailRegExp.test(user.email)) {
+    errors.email = 'Invalid email format. Please check the email.'
   }
 
   if (user.password.length < 8) {
-    errors.password = "The password should be at least 8 characters"
+    errors.password = 'The password should be at least 8 characters'
   }
 
   if (user.password !== user.repeatPassword) {
-    errors.repeatPassword = "Passwords do not match. Please make sure your passwords match."
+    errors.repeatPassword =
+      'Passwords do not match. Please make sure your passwords match.'
   }
 
-  if (Object.values(errors).some(error => error)) {
+  if (Object.values(errors).some((error) => error)) {
     setErrors(errors)
     return false
   }

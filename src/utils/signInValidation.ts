@@ -1,4 +1,4 @@
-import { ICredentials } from "../data/types"
+import { ICredentials } from '../data/types'
 
 export const signInValidation = (
   credentials: ICredentials,
@@ -7,15 +7,15 @@ export const signInValidation = (
   const emailRegExp = /^[^@]*@[^@.]+\.[a-z]+$/i
   const errors: ICredentials = {
     email: '',
-    password: ''
+    password: '',
   }
 
-  if (!credentials.email || !(emailRegExp.test(credentials.email))) {
-    errors.email = "Invalid email format. Please check the email."
+  if (!credentials.email || !emailRegExp.test(credentials.email)) {
+    errors.email = 'Invalid email format. Please check the email.'
   }
 
   if (credentials.password.length < 8) {
-    errors.password = "The password should be at least 8 characters"
+    errors.password = 'The password should be at least 8 characters'
   }
 
   if (errors.email || errors.password) {

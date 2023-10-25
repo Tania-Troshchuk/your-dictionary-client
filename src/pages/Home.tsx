@@ -1,20 +1,26 @@
-import { IWord } from "../data/types"
-import { useCallback, useEffect, useState } from "react"
-import { useAddWordMutation, useGetWordsQuery } from "../redux/services/wordsAPI"
-import { Loader, ModalBox, WordForm, WordsTable } from "../components"
+import { IWord } from '../data/types'
+import { useCallback, useEffect, useState } from 'react'
+import {
+  useAddWordMutation,
+  useGetWordsQuery,
+} from '../redux/services/wordsAPI'
+import { Loader, ModalBox, WordForm, WordsTable } from '../components'
 
 export const Home = () => {
   const { data, isLoading } = useGetWordsQuery()
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [addWord, { isLoading: isSaving, isSuccess }] = useAddWordMutation()
 
-  const handleAddWord = useCallback(async (word: IWord) => {
-    await addWord({
-      word: word.word,
-      translation: word.translation,
-      examples: word.examples ? word.examples : undefined
-    })
-  }, [addWord])
+  const handleAddWord = useCallback(
+    async (word: IWord) => {
+      await addWord({
+        word: word.word,
+        translation: word.translation,
+        examples: word.examples ? word.examples : undefined,
+      })
+    },
+    [addWord]
+  )
 
   useEffect(() => {
     isSuccess && setIsOpenModal(false)
@@ -26,10 +32,7 @@ export const Home = () => {
 
       {isOpenModal && (
         <ModalBox onClose={() => setIsOpenModal(false)}>
-          <WordForm
-            handleSubmit={handleAddWord}
-            isLoading={isSaving}
-          />
+          <WordForm handleSubmit={handleAddWord} isLoading={isSaving} />
         </ModalBox>
       )}
 
@@ -41,15 +44,15 @@ export const Home = () => {
         Add new word
       </button>
 
-      {data?.length
-        ? <WordsTable words={data} />
-        : (
-          <div className="info-text">
-            <span>Start by adding a word. Click{' '}</span>
-            <span className="underline">Add new word</span>
-            <span>{' '}at the top.</span>
-          </div>
-        )}
+      {data?.length ? (
+        <WordsTable words={data} />
+      ) : (
+        <div className="info-text">
+          <span>Start by adding a word. Click </span>
+          <span className="underline">Add new word</span>
+          <span> at the top.</span>
+        </div>
+      )}
     </div>
   )
 }

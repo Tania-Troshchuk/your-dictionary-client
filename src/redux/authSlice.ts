@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
+import { createSlice } from '@reduxjs/toolkit'
+import Cookies from 'js-cookie'
 
 interface AuthState {
   isAuth: boolean
@@ -15,8 +15,8 @@ export const authSlice = createSlice({
   reducers: {
     setIsAuth: (state, action) => {
       state.isAuth = action.payload
-    }
-  }
+    },
+  },
 })
 
 export const { setIsAuth } = authSlice.actions

@@ -1,16 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './authSlice'
-import { wordsAPI } from "./services/wordsAPI";
-import { userAPI } from "./services/userAPI";
-import { testAPI } from "./services/testAPI";
-import { setTokenMiddleware } from "../services/axiosClients";
+import { wordsAPI } from './services/wordsAPI'
+import { userAPI } from './services/userAPI'
+import { testAPI } from './services/testAPI'
+import { setTokenMiddleware } from '../services/axiosClients'
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     [wordsAPI.reducerPath]: wordsAPI.reducer,
     [userAPI.reducerPath]: userAPI.reducer,
-    [testAPI.reducerPath]: testAPI.reducer
+    [testAPI.reducerPath]: testAPI.reducer,
   },
   devTools: import.meta.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) => {
@@ -18,8 +18,8 @@ const store = configureStore({
       setTokenMiddleware,
       wordsAPI.middleware,
       userAPI.middleware,
-      testAPI.middleware
-    ]);
+      testAPI.middleware,
+    ])
   },
 })
 

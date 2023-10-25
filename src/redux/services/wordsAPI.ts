@@ -19,26 +19,28 @@ export const wordsAPI = createApi({
       queryFn: async (data: IWord) => {
         return await responseHandler(clientWithToken.post('api/words', data))
       },
-      invalidatesTags: ['Words']
+      invalidatesTags: ['Words'],
     }),
     updateWord: builder.mutation<IWord, Partial<IWord> & Pick<IWord, '_id'>>({
       queryFn: async ({ _id, ...data }) => {
-        return await responseHandler(clientWithToken.put(`api/words/${_id}`, data))
+        return await responseHandler(
+          clientWithToken.put(`api/words/${_id}`, data)
+        )
       },
-      invalidatesTags: ['Words']
+      invalidatesTags: ['Words'],
     }),
     deleteWord: builder.mutation<IWord, string>({
       queryFn: async (_id) => {
         return await responseHandler(clientWithToken.delete(`api/words/${_id}`))
       },
-      invalidatesTags: ['Words']
-    })
-  })
+      invalidatesTags: ['Words'],
+    }),
+  }),
 })
 
 export const {
   useGetWordsQuery,
   useAddWordMutation,
   useUpdateWordMutation,
-  useDeleteWordMutation
+  useDeleteWordMutation,
 } = wordsAPI

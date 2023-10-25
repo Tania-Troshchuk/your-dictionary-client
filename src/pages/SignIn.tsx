@@ -1,13 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
-import { routes } from "../data/routes"
-import { LineInput, Loader, MainButton } from "../components"
-import { useCallback, useEffect, useState } from "react"
-import { ICredentials } from "../data/types"
-import { useLoginMutation } from "../redux/services/userAPI"
-import Cookies from "js-cookie"
-import { useAppDispatch } from "../redux/hooks"
-import { setIsAuth } from "../redux/authSlice"
-import { signInValidation } from "../utils/signInValidation"
+import { Link, useNavigate } from 'react-router-dom'
+import { routes } from '../data/routes'
+import { LineInput, Loader, MainButton } from '../components'
+import { useCallback, useEffect, useState } from 'react'
+import { ICredentials } from '../data/types'
+import { useLoginMutation } from '../redux/services/userAPI'
+import Cookies from 'js-cookie'
+import { useAppDispatch } from '../redux/hooks'
+import { setIsAuth } from '../redux/authSlice'
+import { signInValidation } from '../utils/signInValidation'
 
 export const SignIn = () => {
   const navigate = useNavigate()
@@ -15,14 +15,14 @@ export const SignIn = () => {
   const [login, { isSuccess, data, isLoading }] = useLoginMutation()
   const [credentials, setCredentials] = useState<ICredentials>({
     email: '',
-    password: ''
+    password: '',
   })
   const [errors, setErrors] = useState<ICredentials | undefined>()
 
   const handleInput = useCallback((value: string, key: keyof ICredentials) => {
-    setCredentials(prev => ({
+    setCredentials((prev) => ({
       ...prev,
-      [key]: value
+      [key]: value,
     }))
   }, [])
 
@@ -39,7 +39,7 @@ export const SignIn = () => {
   const handleOnClickDemo = useCallback(async () => {
     await login({
       email: 'demo@email.com',
-      password: 'demo-password'
+      password: 'demo-password',
     })
   }, [login])
 
@@ -57,33 +57,33 @@ export const SignIn = () => {
 
       <form
         className="p-6 flex gap-8 flex-col items-center bg-melrose-50 rounded-lg shadow-lg"
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault()
           handleSignIn()
         }}
       >
         <LineInput
           value={credentials.email}
-          placeholder='email'
+          placeholder="email"
           handleInput={(value) => handleInput(value, 'email')}
           error={errors?.email}
         />
 
         <LineInput
           value={credentials.password}
-          placeholder='password'
+          placeholder="password"
           isPassword
           handleInput={(value) => handleInput(value, 'password')}
           error={errors?.password}
         />
 
-        <div className='text-sm self-start text-melrose-600'>
-          <span>* Want to try the demo?{' '}</span>
+        <div className="text-sm self-start text-melrose-600">
+          <span>* Want to try the demo? </span>
           <span
-            className='cursor-pointer hover:text-amber-500'
+            className="cursor-pointer hover:text-amber-500"
             onClick={handleOnClickDemo}
           >
-              Just click here 🪄
+            Just click here 🪄
           </span>
         </div>
 
@@ -97,7 +97,7 @@ export const SignIn = () => {
       </form>
 
       <div className="pt-8 text-center text-melrose-800">
-        <span>If you're new here, simply click{' '}</span>
+        <span>If you're new here, simply click </span>
 
         <Link
           to={routes.signUp}
@@ -106,7 +106,7 @@ export const SignIn = () => {
           Register now
         </Link>
 
-        <span>{' '}to join your language adventure</span>
+        <span> to join your language adventure</span>
       </div>
     </div>
   )
