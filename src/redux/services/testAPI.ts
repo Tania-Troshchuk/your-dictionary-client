@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ITest } from '../../data/types'
-import { responseHandler } from '../../services/responseHandler'
-import { clientWithToken } from '../../services/axiosClients'
+import { responseHandler } from '../responseHandler'
+import { clientWithToken } from '../axiosClients'
 
 export const testAPI = createApi({
   reducerPath: 'api/tests',

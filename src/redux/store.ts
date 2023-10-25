@@ -3,7 +3,7 @@ import authReducer from './authSlice'
 import { wordsAPI } from './services/wordsAPI'
 import { userAPI } from './services/userAPI'
 import { testAPI } from './services/testAPI'
-import { setTokenMiddleware } from '../services/axiosClients'
+import { setTokenMiddleware } from './axiosClients'
 
 const store = configureStore({
   reducer: {

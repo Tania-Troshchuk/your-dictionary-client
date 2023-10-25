@@ -1,6 +1,6 @@
 // import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { responseHandler } from '../../services/responseHandler'
-import { clientWithToken } from '../../services/axiosClients'
+import { responseHandler } from '../responseHandler'
+import { clientWithToken } from '../axiosClients'
 import { ITextToSpeech } from '../../data/types'
 import { AxiosResponse } from 'axios'
 
