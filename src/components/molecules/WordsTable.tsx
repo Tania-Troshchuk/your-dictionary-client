@@ -28,7 +28,8 @@ export interface ISelectedWord {
 }
 
 export const WordsTable = ({ words }: IProps) => {
-  const [modal, setModalAction] = useState<null | ISelectedWord>(null)
+  const [modalAction, setModalAction] = useState<null | ISelectedWord>(null)
+  const [loadingSpeechId, setLoadingSpeechId] = useState<string | null>(null)
   const [deleteWord, { isLoading, isSuccess }] = useDeleteWordMutation()
   const [
     updateWord,
@@ -36,8 +37,12 @@ export const WordsTable = ({ words }: IProps) => {
   ] = useUpdateWordMutation()
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  const handleSpeech = useCallback(async (word: string) => {
-    const data = await getSpeech({ text: word })
+  const handleSpeech = useCallback(async (word: string, id?: string) => {
+    id && setLoadingSpeechId(id)
+
+    const data = await getSpeech({ text: word }).finally(() =>
+      setLoadingSpeechId(null)
+    )
 
     if (data && audioRef.current) {
       const blob = new Blob([data], { type: 'audio/wav' })
@@ -63,11 +68,13 @@ export const WordsTable = ({ words }: IProps) => {
   )
 
   const handleDeleteWord = useCallback(async () => {
-    modal?.word._id && (await deleteWord(modal.word._id))
-  }, [deleteWord, modal?.word._id])
+    modalAction?.word._id && (await deleteWord(modalAction.word._id))
+  }, [deleteWord, modalAction?.word._id])
 
   useEffect(() => {
-    ;(isSuccess || isUpdateSuccess) && setModalAction(null)
+    if (isSuccess || isUpdateSuccess) {
+      setModalAction(null)
+    }
   }, [isSuccess, isUpdateSuccess])
 
   return (
@@ -75,18 +82,18 @@ export const WordsTable = ({ words }: IProps) => {
       {(isLoading || isUpdateLoading) && <Loader />}
       <audio className="hidden" controls ref={audioRef} src="" />
 
-      {modal && (
+      {modalAction && (
         <ModalBox onClose={() => setModalAction(null)}>
-          {modal.action === 'edit' ? (
+          {modalAction.action === 'edit' ? (
             <WordForm
-              editedWord={modal.word}
+              editedWord={modalAction.word}
               isLoading={false}
               handleSubmit={(word) => handleEditWord(word)}
             />
           ) : (
             <ConfirmBox
               item="word"
-              text={modal.word.word}
+              text={modalAction.word.word}
               yes="Yes, delete"
               onClickNo={() => setModalAction(null)}
               onClickYes={handleDeleteWord}
@@ -112,7 +119,11 @@ export const WordsTable = ({ words }: IProps) => {
                 {item.translation}
               </div>
               <div className="border-t-2 px-3 py-2 flex justify-between">
-                <button onClick={() => handleSpeech(item.word)}>
+                <button
+                  onClick={() => handleSpeech(item.word, item._id)}
+                  disabled={loadingSpeechId === item._id}
+                  className="disabled:opacity-50"
+                >
                   <img src={voiceIcon} alt="voice" />
                 </button>
 
