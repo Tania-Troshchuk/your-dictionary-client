@@ -9,7 +9,7 @@ import {
 import deleteIcon from '../../assets/delete.svg'
 import editIcon from '../../assets/edit.svg'
 import voiceIcon from '../../assets/voice.svg'
-import { IWord } from '../../data/types'
+import { IWord } from '../../types/types'
 import { ConfirmBox, ModalBox, WordForm } from '.'
 import {
   useDeleteWordMutation,

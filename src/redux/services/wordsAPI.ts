@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { responseHandler } from '../responseHandler'
-import { IWord } from '../../data/types'
+import { IWord } from '../../types/types'
 import { clientWithToken } from '../axiosClients'
 
 export const wordsAPI = createApi({

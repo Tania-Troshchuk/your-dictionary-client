@@ -1,4 +1,4 @@
-import { IWord } from '../data/types'
+import { IWord } from '../types/types'
 
 export interface ITestItem extends Pick<IWord, 'word' | 'translation'> {
   options: string[]

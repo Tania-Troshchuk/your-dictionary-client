@@ -1,4 +1,4 @@
-import { ICredentials } from '../data/types'
+import { ICredentials } from '../types/types'
 
 export const signInValidation = (
   credentials: ICredentials,

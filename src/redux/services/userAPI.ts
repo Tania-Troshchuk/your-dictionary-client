@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ICredentials, IUser } from '../../data/types'
+import { ICredentials, IUser } from '../../types/types'
 import { responseHandler } from '../responseHandler'
 import { clientNoToken } from '../axiosClients'
 

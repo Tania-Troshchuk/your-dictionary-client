@@ -1,4 +1,4 @@
-import { IWord } from '../data/types'
+import { IWord } from '../types/types'
 import { useCallback, useEffect, useState } from 'react'
 import {
   useAddWordMutation,
