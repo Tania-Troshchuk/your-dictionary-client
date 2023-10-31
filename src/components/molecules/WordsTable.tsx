@@ -56,15 +56,25 @@ export const WordsTable = ({ words }: IProps) => {
   }, [])
 
   const handleEditWord = useCallback(
-    async (word: IWord) => {
+    async (editWord: IWord) => {
+      const isChangedWord =
+        editWord.word !== modalAction?.word.word ||
+        editWord.translation !== modalAction.word.translation ||
+        (editWord.examples ?? '') !== (modalAction.word.examples ?? '')
+
+      if (!isChangedWord) {
+        setModalAction(null)
+        return
+      }
+
       await updateWord({
-        _id: word._id,
-        word: word.word,
-        translation: word.translation,
-        examples: word.examples ? word.examples : undefined,
+        _id: editWord._id,
+        word: editWord.word,
+        translation: editWord.translation,
+        examples: editWord.examples ? editWord.examples : undefined,
       })
     },
-    [updateWord]
+    [modalAction, updateWord]
   )
 
   const handleDeleteWord = useCallback(async () => {
