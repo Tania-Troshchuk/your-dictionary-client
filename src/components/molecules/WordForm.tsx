@@ -1,7 +1,7 @@
 import { HTMLAttributes, useCallback, useState } from 'react'
 import { LineInput, MainButton } from '..'
 import classNames from 'classnames'
-import { IWord } from '../../data/types'
+import { IWord } from '../../types/types'
 
 interface IProps extends HTMLAttributes<HTMLFormElement> {
   isLoading: boolean

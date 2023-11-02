@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { responseHandler } from '../responseHandler'
-import { IWord } from '../../data/types'
+import { IWord } from '../../types/types'
 import { clientWithToken } from '../axiosClients'
-// import Cookies from 'js-cookie'
 
 export const wordsAPI = createApi({
   reducerPath: 'api/words',

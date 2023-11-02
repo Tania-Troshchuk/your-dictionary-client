@@ -5,7 +5,7 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { IWord } from '../../data/types'
+import { IWord } from '../../types/types'
 import { ITestItem, getTestContent } from '../../utils/getTestContent'
 import { useAddTestMutation } from '../../redux/services/testAPI'
 import { ResultCard } from '.'
