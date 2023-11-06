@@ -1,6 +1,6 @@
 # Your Dictionary App (frontend part)
 
-Welcome to the frontend repository of Your Dictionary App, a language-learning tool designed to facilitate English language acquisition. This repository contains the source code and related resources for the app's user interface.
+Welcome to the frontend repository of Your Dictionary App, a language-learning tool designed to facilitate English language acquisition. This repository contains the source code for the app's user interface.
 
 ## Demo
 
@@ -42,6 +42,6 @@ The app should now be accessible at `http://127.0.0.1:5173/your-dictionary-clien
 In this project, you can run the following scripts:
 - **`npm run dev`**: This script runs the project in a development mood.
 - **`npm run build`**: This script compiles TypeScript using `tsc` and then uses Vite to build the frontend. It prepares the project for deployment.
-- **`npm run lint`**: Use this script to run ESLint on your project files. It checks TypeScript and TypeScript/React files for code quality and style issues. 
+- **`npm run lint`**: Use this script to run ESLint on the project files. It checks TypeScript and TypeScript/React files for code quality and style issues. 
 - **`npm run preview`**: Run this script to start a Vite preview server. This can be useful for testing the production build locally before deployment.
 - **`npm run prepare`**: This script is used for Husky, a Git hooks manager, to enforce code quality before commits.
