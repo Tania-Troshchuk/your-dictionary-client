@@ -2,10 +2,16 @@
 
 Welcome to the frontend repository of Your Dictionary App, a language-learning tool designed to facilitate English language acquisition. This repository contains the source code and related resources for the app's user interface.
 
+## Demo
+
+Check out a live demo of the Your Dictionary App to explore its features and functionalities:
+
+[Live Demo](https://tania-troshchuk.github.io/your-dictionary-client/)
+
+
 ## Project Overview
 
 Key Features:
-
 - Word Bank: Users can save new words and their translations, along with contextual usage examples and phrases, creating a personalized word bank for efficient learning.
 - Pronunciation: Access precise and clear word pronunciations, aiding users in mastering accurate English pronunciation.
 - Interactive Learning: Engage in an immersive language-learning experience with a built-in testing feature that incorporates the words stored in your word bank.
