@@ -1,6 +1,6 @@
 # Your Dictionary App (frontend part)
 
-Welcome to the frontend repository of Your Dictionary App, a language-learning tool designed to facilitate English language acquisition. This repository contains the source code for the app's user interface.
+Welcome to the frontend repository of Your Dictionary App, a language-learning tool developed to facilitate English language acquisition. This repository contains the source code for the app's user interface.
 
 ## Demo
 
