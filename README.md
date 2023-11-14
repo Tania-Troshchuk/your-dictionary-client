@@ -31,7 +31,7 @@ To set up and run the frontend locally, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Navigate to the project directory.
-3. Install project dependencies by running: npm install.
+3. Install project dependencies by running:  **`npm install`**.
 4. Set the `VITE_BASE_URL` environment variable to the URL of your server. You can configure this value in your environment settings or by creating a .env file.
 5. Start the development server by running: **`npm run dev`**.
 
