@@ -34,6 +34,7 @@ export const LineInput = (props: IProps) => {
 
       {isPassword && (
         <img
+          alt="eye"
           className="absolute right-0 top-2"
           src={showPassword ? eye : closeEye}
           onMouseDown={() => setShowPassword(true)}
