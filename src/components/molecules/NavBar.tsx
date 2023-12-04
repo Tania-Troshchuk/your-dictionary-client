@@ -41,9 +41,9 @@ export const NavBar = () => {
               classNames(
                 'px-2 py-1 focus:outline-melrose-500',
                 {
-                  'border border-melrose-50 rounded text-melrose-50': isActive,
+                  'border border-melrose-50 rounded text-white': isActive,
                 },
-                `${isActive ? 'hover:bg-melrose-400' : 'hover:text-melrose-50'}`
+                `${isActive ? 'hover:bg-melrose-400' : 'hover:text-white'}`
               )
             }
           >
@@ -54,7 +54,7 @@ export const NavBar = () => {
 
       <button
         onClick={logout}
-        className="underline focus:outline-melrose-500 hover:text-melrose-50"
+        className="underline focus:outline-melrose-500 hover:text-white"
       >
         Sign out
       </button>

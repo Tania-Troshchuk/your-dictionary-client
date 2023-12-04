@@ -16,9 +16,9 @@ export const MainButton = (props: IProps) => {
         onClick && onClick(e)
       }}
       className={classNames(
-        'p-2 bg-melrose-500 border rounded-lg text-melrose-50 focus:outline-melrose-800',
+        'p-2 bg-melrose-500 border rounded-lg text-white focus:outline-melrose-800',
         'hover:bg-melrose-600 hover:text-white',
-        'disabled:bg-melrose-400 disabled:text-melrose-50',
+        'disabled:bg-melrose-400 disabled:text-white',
         optionalClass
       )}
       {...rest}
