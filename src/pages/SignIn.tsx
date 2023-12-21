@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { routes } from '../data/routes'
 import { LineInput, Loader, MainButton } from '../components'
 import { useCallback, useEffect, useState } from 'react'
-import { ICredentials } from '../types/types'
+import { TCredentials } from '../types/types'
 import { useLoginMutation } from '../redux/services/userAPI'
 import Cookies from 'js-cookie'
 import { useAppDispatch } from '../redux/hooks'
@@ -13,13 +13,13 @@ export const SignIn = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const [login, { isSuccess, data, isLoading }] = useLoginMutation()
-  const [credentials, setCredentials] = useState<ICredentials>({
+  const [credentials, setCredentials] = useState<TCredentials>({
     email: '',
     password: '',
   })
-  const [errors, setErrors] = useState<ICredentials | undefined>()
+  const [errors, setErrors] = useState<TCredentials | undefined>()
 
-  const handleInput = useCallback((value: string, key: keyof ICredentials) => {
+  const handleInput = useCallback((value: string, key: keyof TCredentials) => {
     setCredentials((prev) => ({
       ...prev,
       [key]: value,

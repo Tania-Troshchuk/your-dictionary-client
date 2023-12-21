@@ -1,6 +1,6 @@
 import { IWord } from '../types/types'
 
-export interface ITestItem extends Pick<IWord, 'word' | 'translation'> {
+export interface IQuizTestItem extends Pick<IWord, 'word' | 'translation'> {
   options: string[]
 }
 
@@ -35,11 +35,11 @@ const getOptions = (word: IWord, list: IWord[], quantity: number) => {
   return options
 }
 
-export const getTestContent = (
+export const getQuizTestContent = (
   list: IWord[],
   quantity: number,
   optionsLength: number
-): ITestItem[] => {
+): IQuizTestItem[] => {
   const indexes = getRandomWordIndexes(quantity, list)
 
   return indexes.map((el) => {
@@ -49,6 +49,20 @@ export const getTestContent = (
       word: list[el].word,
       translation: list[el].translation,
       options: [...options].sort(() => 0.5 - Math.random()),
+    }
+  })
+}
+
+export const getMatchingTestContent = (
+  list: IWord[],
+  quantity: number
+): IWord[] => {
+  const indexes = getRandomWordIndexes(quantity, list)
+
+  return indexes.map((el) => {
+    return {
+      word: list[el].word,
+      translation: list[el].translation,
     }
   })
 }

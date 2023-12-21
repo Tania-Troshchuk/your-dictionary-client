@@ -11,7 +11,7 @@ export interface IUser {
   password: string
 }
 
-export type ICredentials = Pick<IUser, 'email' | 'password'>
+export type TCredentials = Pick<IUser, 'email' | 'password'>
 
 export interface IWord {
   _id?: string
@@ -23,3 +23,5 @@ export interface IWord {
 export interface ITextToSpeech {
   text: string
 }
+
+export type TTestTypes = 'Quiz' | 'Matching'

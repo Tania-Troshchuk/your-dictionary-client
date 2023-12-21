@@ -36,7 +36,7 @@ export const Results = () => {
 
       {data?.length ? (
         <>
-          <h2 className="py-8 tracking-wide text-xl text-melrose-800 font-kalam">
+          <h2 className="py-8 tracking-wide text-2xl text-melrose-800 font-kalam">
             Your tests results:
           </h2>
 

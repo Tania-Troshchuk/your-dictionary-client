@@ -1,11 +1,11 @@
-import { ICredentials } from '../types/types'
+import { TCredentials } from '../types/types'
 
 export const signInValidation = (
-  credentials: ICredentials,
-  setErrors: React.Dispatch<React.SetStateAction<ICredentials | undefined>>
+  credentials: TCredentials,
+  setErrors: React.Dispatch<React.SetStateAction<TCredentials | undefined>>
 ): boolean | undefined => {
   const emailRegExp = /^[^@]*@[^@.]+\.[a-z]+$/i
-  const errors: ICredentials = {
+  const errors: TCredentials = {
     email: '',
     password: '',
   }

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ICredentials, IUser } from '../../types/types'
+import { TCredentials, IUser } from '../../types/types'
 import { responseHandler } from '../responseHandler'
 import { clientNoToken } from '../axiosClients'
 
@@ -14,8 +14,8 @@ export const userAPI = createApi({
       },
     }),
 
-    login: builder.mutation<{ token: string }, ICredentials>({
-      queryFn: async (data: ICredentials) => {
+    login: builder.mutation<{ token: string }, TCredentials>({
+      queryFn: async (data: TCredentials) => {
         return responseHandler(clientNoToken.post('api/login', data))
       },
     }),

@@ -1,19 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       dropShadow: {
-        '3d': '1px 1px 1px rgba(0,0,0,0.6)'
+        '3d': '1px 1px 1px rgba(0,0,0,0.6)',
       },
       fontFamily: {
-        'kalam': ['Kalam', 'sans-serif']
+        kalam: ['Kalam', 'sans-serif'],
       },
       colors: {
-        'melrose': {
+        melrose: {
           50: '#f4f2ff',
           100: '#ebe8ff',
           200: '#dad4ff',
@@ -31,8 +28,10 @@ export default {
         'bounce-1': 'bounce 1s infinite 0.33s',
         'bounce-2': 'bounce 1s infinite 0.67s',
       },
+      backgroundImage: {
+        dots: "url('/src/assets/draggable-dots.svg')",
+      },
     },
   },
   plugins: [],
 }
-
