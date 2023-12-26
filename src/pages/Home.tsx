@@ -16,7 +16,7 @@ export const Home = () => {
       await addWord({
         word: word.word,
         translation: word.translation,
-        examples: word.examples ? word.examples : undefined,
+        examples: word.examples || undefined,
       })
     },
     [addWord]

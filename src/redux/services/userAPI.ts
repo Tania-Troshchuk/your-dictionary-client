@@ -10,13 +10,15 @@ export const userAPI = createApi({
   endpoints: (builder) => ({
     registration: builder.mutation<{ token: string }, IUser>({
       queryFn: async (data: IUser) => {
-        return responseHandler(clientNoToken.post('api/registration', data))
+        return await responseHandler(
+          clientNoToken.post('api/registration', data)
+        )
       },
     }),
 
     login: builder.mutation<{ token: string }, TCredentials>({
       queryFn: async (data: TCredentials) => {
-        return responseHandler(clientNoToken.post('api/login', data))
+        return await responseHandler(clientNoToken.post('api/login', data))
       },
     }),
   }),

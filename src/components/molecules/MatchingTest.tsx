@@ -123,7 +123,7 @@ export const MatchingTest = (props: IProps) => {
     if (fillMatches.length === testLength) {
       handleResult()
     }
-  })
+  }, [handleResult, testLength, userMatches.selectedItems])
 
   return (
     <>
