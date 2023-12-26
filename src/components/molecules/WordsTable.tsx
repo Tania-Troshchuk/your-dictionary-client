@@ -71,7 +71,7 @@ export const WordsTable = ({ words }: IProps) => {
         _id: editWord._id,
         word: editWord.word,
         translation: editWord.translation,
-        examples: editWord.examples ? editWord.examples : undefined,
+        examples: editWord.examples || undefined,
       })
     },
     [modalAction, updateWord]

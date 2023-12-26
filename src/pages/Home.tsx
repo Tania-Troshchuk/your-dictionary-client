@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import {
   useAddWordMutation,
   useGetWordsQuery,
+  useUpdateWordMutation,
 } from '../redux/services/wordsAPI'
 import { Loader, ModalBox, WordForm, WordsTable } from '../components'
 
@@ -10,21 +11,38 @@ export const Home = () => {
   const { data, isLoading } = useGetWordsQuery()
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [addWord, { isLoading: isSaving, isSuccess }] = useAddWordMutation()
+  const [updateWord, { isLoading: isUpdating, isSuccess: isUpdateSuccess }] =
+    useUpdateWordMutation()
 
   const handleAddWord = useCallback(
-    async (word: IWord) => {
-      await addWord({
-        word: word.word,
-        translation: word.translation,
-        examples: word.examples || undefined,
-      })
+    async (newWord: IWord) => {
+      const duplicate = data?.find(
+        (el) => el.word.toLowerCase() === newWord.word.toLowerCase()
+      )
+
+      if (duplicate) {
+        await updateWord({
+          _id: duplicate._id,
+          word: newWord.word,
+          translation: `${duplicate.translation}, ${newWord.translation}`,
+          examples: duplicate.examples
+            ? `${duplicate.examples}\n${newWord.examples}`
+            : newWord.examples || undefined,
+        })
+      } else {
+        await addWord({
+          word: newWord.word,
+          translation: newWord.translation,
+          examples: newWord.examples || undefined,
+        })
+      }
     },
-    [addWord]
+    [addWord, data, updateWord]
   )
 
   useEffect(() => {
-    isSuccess && setIsOpenModal(false)
-  }, [isSuccess])
+    ;(isSuccess || isUpdateSuccess) && setIsOpenModal(false)
+  }, [isSuccess, isUpdateSuccess])
 
   return (
     <div className="my-8 mx-4 md:w-5/6 md:mx-auto">
@@ -32,7 +50,10 @@ export const Home = () => {
 
       {isOpenModal && (
         <ModalBox onClose={() => setIsOpenModal(false)}>
-          <WordForm handleSubmit={handleAddWord} isLoading={isSaving} />
+          <WordForm
+            handleSubmit={handleAddWord}
+            isLoading={isSaving || isUpdating}
+          />
         </ModalBox>
       )}
 
